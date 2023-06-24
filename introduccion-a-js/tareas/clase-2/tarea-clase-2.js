@@ -19,26 +19,31 @@
 // TAREA: Cambiar el operador a '-', y fijarse que llame a la función 'restar' en vez de a la de 'sumar'.
 
 function sumar(numero1, numero2) {
-    return numero1 + numero2;
+  return numero1 + numero2;
 }
 
 function restar(numero1, numero2) {
-    return numero1 - numero2;
+  return numero1 - numero2;
 }
 
-const operador = prompt('Ingrese + o -');
-const numero1 = 1;
-const numero2 = 2;
+const operador = "+";
+let numero1 = 1;
+let numero2 = 3;
 
-let resultado;
-if (operador === '+') {
+function sumarORestar(operador, numero1, numero2) {
+  let resultado = 0;
+  operador = prompt("Ingrese + o -");
+
+  if (operador === "+") {
     resultado = sumar(numero1, numero2);
-} else {
+  } else if (operador === "-") {
     resultado = restar(numero1, numero2);
+  } else {
+    console.log("El operador ingresado no es válido");
+  }
+  if (operador === "+" || operador === "-") {
+    console.log(`El resultado de ${numero1} ${operador} ${numero2} es ${resultado}` );
+  }
 }
 
-//https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/template_strings
-console.log(
-    `El resultado de ${numero1} ${operador} ${numero2} es ${resultado}`
-);
-
+sumarORestar(operador, numero1, numero2);

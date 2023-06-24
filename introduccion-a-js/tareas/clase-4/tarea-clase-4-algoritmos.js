@@ -9,10 +9,29 @@ usando  elementos de programación simples y clásicos.
 Desafío de programación #1: Imprimí los números del 1 al 10
 
  Resultado: 10 9 8 7 6 5 4 3 2 1
+*/
+function imprimirNumerosDel1Al10() {
+  for (let i = 1; i <= 10; i++) {
+    console.log(i);
+  }
+}
+imprimirNumerosDel1Al10();
 
+/*
  Desafìo de programación  #2: Imprimí los números impares del 1 al 100
 
  1 3 5 ... 99
+*/
+function imprimirImpares() {
+  for (let i = 1; i <= 100; i++) {
+    if (i % 2 !== 0) {
+      console.log(i);
+    }
+  }
+}
+imprimirImpares();
+
+/*
 
 Desafío de programación #3: Imprimí la tabla de multiplicación del 7
 
@@ -20,7 +39,15 @@ Desafío de programación #3: Imprimí la tabla de multiplicación del 7
  7x1 = 7
  ...
  7x9 = 63
+*/
+function tablaDel7() {
+  for (let i = 0; i <= 10; i++) {
+    console.log(`7 x ${i} = ${7 * i}`);
+  }
+}
+tablaDel7();
 
+/*
 Desafío de programación #4: Imprimí todas las tablas de multiplicación del 1 al 9
 
  1x0 = 0
@@ -32,38 +59,228 @@ Desafío de programación #4: Imprimí todas las tablas de multiplicación del 1
  ...
  ...
  9x9 = 81
+ */
+function tablasDel1Al9() {
+  for (let i = 1; i <= 9; i++) {
+    for (let j = 0; j <= 10; j++) {
+      console.log(`${i} x ${j} = ${i * j}`);
+    }
+  }
+}
+
+tablasDel1Al9();
+
+/*
 
 Desafío de programación #5: Calcula el resultado de la suma de los numeros del 1 al 10 en un array.
  [1,2,3,4,5,6,7,8,9,10]
 
  1 + 2 + 3 + ... + 10 = ? //hacerlo con un array y un bucle
 
+*/
+const arrayNros = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+function sumaArray(array) {
+  let total = 0;
+  for (let i = 0; i < array.length; i++) {
+    total += array[i];
+  }
+  console.log(total);
+}
+
+sumaArray(arrayNros);
+
+/*
+
 Desafío de programación #6: Calcula 10! (10 factorial)
 
  10 * 9 * 8 * ... * 1
 
+ */
+function factorial(n) {
+  let total = 1;
+  for (let i = n; i > 0; i--) {
+    total *= i;
+  }
+  console.log(total);
+}
+
+factorial(10);
+
+/*
+
 Desafío de programación #7: Calcula la suma de todos los números impares mayores que 10 y menores que 30
+
+*/
+function sumaImpares() {
+  let total = 0;
+  for (let i = 10; i < 30; i++) {
+    if (i % 2 !== 0) {
+      total += i;
+    }
+  }
+  console.log(total);
+}
+
+sumaImpares();
+
+/*
 
 Desafío de programación #8: Crea una función que convierta de Celsius a Fahrenheit
 
+*/
+function celsiusToFahrenheit(celsius) {
+  console.log((celsius * 9) / 5 + 32);
+}
+
+celsiusToFahrenheit(20);
+
+/*
+
+
 Desafío de programación #9: Crea una función que convierta de Fahrenheit a Celsius
 
+*/
+
+function fahrenheitToCelsius(fahrenheit) {
+  console.log(((fahrenheit - 32) * 5) / 9);
+}
+
+fahrenheitToCelsius(68);
+
+/*
+
 Desafío de programación #10: Calcula la suma de todos los números en un array de números
+*/
+const arrayNros2 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+function sumaArray2(array) {
+  let total = 0;
+  for (let i = 0; i < array.length; i++) {
+    total += array[i];
+  }
+  console.log(total);
+}
+
+sumaArray2(arrayNros2);
+
+/*
+
 
 Desafío de programación #11: Calcula el promedio de todos los números en un array de números. (en una función)
+*/
+const arrayNros3 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+function promedioArray(array) {
+  let total = 0;
+  for (let i = 0; i < array.length; i++) {
+    total += array[i];
+  }
+  console.log(total / array.length);
+}
+
+promedioArray(arrayNros3);
+
+/*
+
 
 Desafío de programación #12: Crea una función que reciba un array de números y devuelva un array conteniendo solo los números positivos
+*/
+const arrayNros4 = [1, 2, 3, 4, -5, 6, -7, 8, 9];
+
+function arrayPositivos(array) {
+  let arrayPositivos = [];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] > 0) {
+      arrayPositivos.push(array[i]);
+    }
+  }
+  console.log(arrayPositivos);
+}
+
+arrayPositivos(arrayNros4);
+/*
 
 Desafío de programación #13: Find the maximum number in an array of numbers
+*/
+const arrayNros5 = [1, 2, 3, 4, -5, 6, -7, 8, 9];
+
+function maximoNumero(array) {
+  let mayorNumero = array[0];
+  for (let i = 0; i < array.length; i++) {
+    if (mayorNumero < array[i]) {
+      mayorNumero = array[i];
+    }
+  }
+  console.log(mayorNumero);
+}
+
+maximoNumero(arrayNros5);
+
+/*
 
 Desafío de programación #14: Imprimir los primeros 10 dígitos de Fibonacci sin recursión
-
 Fibonacci (lo buscan en google si no lo saben o no se acuerdan)
 El resultado debería ser: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+*/
+
+function fibonacci() {
+  let a = 0;
+  let b = 1;
+  let c = 0;
+  for (let i = 0; i < 10; i++) {
+    console.log(a);
+    c = a + b;
+    a = b;
+    b = c;
+  }
+}
+console.log("Fibonacci");
+fibonacci();
+
+/*
 
 Desafío de programación #15: Crear una función que encuentre el número n de Fibonacci usando recursión
+*/
+function buscarFibonacci(n) {
+  let a = 0;
+  let b = 1;
+  let c = 0;
+
+  if (n < 2) {
+    return "El numero debe ser mayor a 1";
+  }
+  for (let i = 0; i < 10; i++) {
+    console.log(a);
+    c = a + b;
+    a = b;
+    b = c;
+    if (a === n || b === n || c === n) {
+      return "El numero " + n + " es de Fibonacci";
+    }
+  }
+
+  return "El numero " + n + " no es de Fibonacci";
+}
+
+console.log("Buscar en Fibonacci");
+console.log(buscarFibonacci(5));
+
+/*
+
 
 Desafío de programación #16: Crear una función que dado un número retorne un Boolean (true/false) dependiendo si es primo o no.
+*/
+function esNumeroPrimo(n) {
+  for (let i = 2; i < n; i++) {
+    if (n % i === 0) return false;
+  }
+
+  return n > 1;
+}
+
+/*
+
 
 Desafío de programación #17: Calcular la suma de los dígitos positivos de un número entero positivo
 Ejemplo:
@@ -71,11 +288,45 @@ Ejemplo:
    2 = 2
    1234 = 1 + 2 + 3 + 4 = 10
 
-Desafío de programación #18: Imprimir los primeros 100 números primos
+   */
+function sumaDigitos(n) {
+  let suma = 0;
+  let numero = n.toString();
+  for (let i = 0; i < numero.length; i++) {
+    suma += parseInt(numero[i]);
+  }
+  return suma;
+}
 
+console.log(sumaDigitos(1234));
+
+   /*
+
+Desafío de programación #18: Imprimir los primeros 100 números primos
+*/
+function imprimirNumerosPrimos(){
+  let contador = 0;
+  let i = 0;
+  while(contador < 100){
+    if(esNumeroPrimo(i)){
+      console.log(i);
+      contador++;
+    }
+    i++;
+  }
+}
+console.log("imprimir numeros primos")
+
+
+
+/*
 Desafío de programación #19: Crear una función que retorne un array con los primeros números "n-primos" mayores que un número particular definido "alComienzo"
 Ejemplo:
   Quiero los primeros 4 números primos mayores que 5, el resultado debería ser: [7,11,13,17,19]
+  */
+function numerosPrimosMayoresQue(n, alComienzo){
+
+  /*
 
 Desafío de programación #20: Rotar un array hacia la izquierda una posición
 Ejemplo:
