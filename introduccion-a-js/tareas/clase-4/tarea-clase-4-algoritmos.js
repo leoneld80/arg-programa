@@ -275,10 +275,10 @@ function esNumeroPrimo(n) {
   for (let i = 2; i < n; i++) {
     if (n % i === 0) return false;
   }
-
-  return n > 1;
+  return true;
 }
-
+console.log("Es primo");
+console.log(esNumeroPrimo(11));
 /*
 
 
@@ -292,68 +292,148 @@ Ejemplo:
 function sumaDigitos(n) {
   let suma = 0;
   let numero = n.toString();
-  for (let i = 0; i < numero.length; i++) {
+  for (let i = 2; i < numero.length; i++) {
     suma += parseInt(numero[i]);
   }
   return suma;
 }
-
+console.log("Suma digitos");
 console.log(sumaDigitos(1234));
 
-   /*
+/*
 
 Desafío de programación #18: Imprimir los primeros 100 números primos
 */
-function imprimirNumerosPrimos(){
-  let contador = 0;
-  let i = 0;
-  while(contador < 100){
-    if(esNumeroPrimo(i)){
-      console.log(i);
-      contador++;
+function imprimirNumerosPrimos(numero) {
+  let numerosPrimos = [];
+  let contador = 2;
+
+  while (contador < numero) {
+    let esPrimo = true;
+    for (let i = 2; i < contador; i++) {
+      if (contador % i === 0) {
+        esPrimo = false;
+        break;
+      }
     }
-    i++;
+    if (esPrimo) {
+      numerosPrimos.push(contador);
+    }
+    contador++;
   }
+
+  return numerosPrimos.map((numero) => console.log(numero));
 }
-console.log("imprimir numeros primos")
 
-
+console.log("imprimir numeros primos");
+imprimirNumerosPrimos(100);
 
 /*
 Desafío de programación #19: Crear una función que retorne un array con los primeros números "n-primos" mayores que un número particular definido "alComienzo"
 Ejemplo:
   Quiero los primeros 4 números primos mayores que 5, el resultado debería ser: [7,11,13,17,19]
   */
-function numerosPrimosMayoresQue(n, alComienzo){
+function numerosPrimosMayoresQue(n_primos, alComienzo) {
+  let numerosPrimos = [];
+  let contador = alComienzo;
+  let cantidadPrimos = n_primos;
 
-  /*
+  while (numerosPrimos.length < cantidadPrimos) {
+    let esPrimo = true;
+    for (let i = 2; i < contador; i++) {
+      if (contador % i === 0) {
+        esPrimo = false;
+        break;
+      }
+    }
+    if (esPrimo) {
+      numerosPrimos.push(contador);
+    }
+    contador++;
+  }
+
+  return numerosPrimos.map((numero) => console.log(numero));
+}
+console.log("numeros primos mayores que y por cantidad");
+numerosPrimosMayoresQue(4, 5);
+/*
 
 Desafío de programación #20: Rotar un array hacia la izquierda una posición
 Ejemplo:
   [9,1,2,3,4] debería quedar como [1,2,3,4,9]
   [5] debería quedar como [5]
   [4,3,2,1] debería quedar como [3,2,1,4]
+  */
+function rotarArrayIzquierda(array) {
+  let primerElemento = array.shift();
+  array.push(primerElemento);
+  return array;
+}
+
+console.log("rotar array a la izquierda");
+console.log(rotarArrayIzquierda([9, 1, 2, 3, 4]));
+
+/*
+
 
 Desafío de programación #21: Rotar un array a la derecha una posición
 Ejemplo:
   [2,3,4,1] debería quedar como [1,2,3,4]
   [2,3] debería quedar como [3,2]
+*/
+function rotarArrayDerecha(array) {
+  let ultimoElemento = array.pop();
+  array.unshift(ultimoElemento);
+  return array;
+}
 
+console.log("rotar array a la derecha");
+console.log(rotarArrayDerecha([2, 3, 4, 1]));
+
+/*
 Desafío de programación #22: Invertir un array
 Ejemplo:
   [1,2,3,4] debería quedar como [4,3,2,1]
   [6,5,4,3,2,1] debería quedar como [1,2,3,4,5,6]
   [5,6,3] debería quedar como [3,6,5]
+*/
+function invertirArray(array) {
+  return array.reverse();
+}
+
+console.log("invertir array");
+console.log(invertirArray([1, 2, 3, 4]));
+
+/*
+
 
 Desafío de programación #23: Invertir una cadena de caracteres
 Ejemplo:
   "dabale arroz a la zorra el abad" debería quedar como "daba le arroz al a zorra elabad"
   "bienvenido" debería quedar como "odinevneib"
 
-Desafío de programación #24: Crear una función que reciba dos dos arrays (arreglos) como argumentos y returne el resultado en un nuevo arreglo
+  */
+function invertirCadena(cadena) {
+  return cadena.split("").reverse().join("");
+}
+
+console.log("invertir cadena");
+console.log(invertirCadena("bienvenido"));
+
+/*
+
+Desafío de programación #24: Crear una función que reciba dos arrays (arreglos) como argumentos y retorne el resultado en un nuevo arreglo
 Ejemplo:
   [1,2,3] con ["a","b","c"] debería quedar como [1,2,3,"a","b","c"]
+*/
+function concatenarArrays(array1, array2) {
+  return array1.concat(array2);
+}
 
+console.log("concatenar arrays");
+console.log(concatenarArrays([1, 2, 3], ["a", "b", "c"]));
+
+/*
 
 Desafío de programación #25: Crear una función que reciba dos arrays (arreglos) de números como argumentos y retorne un array con números que estén en uno u otro array, pero NO en ambos.
 Nota: Esto se llama "diferencia simétrica" entre conjuntos
@@ -362,45 +442,250 @@ Desafío de programación #25: Crear una función que reciba dos arrays (arreglo
 Ejemplo:
   [1,2,3] y [3,7,11] debería devolver [1,2,7,11]
   [5,10,3] y [10,1] debería quedar como [5,3,1]
+*/
+function diferenciaSimetrica(array1, array2) {
+  let array3 = array1.filter((x) => !array2.includes(x));
+  let array4 = array2.filter((x) => !array1.includes(x));
+  return array3.concat(array4);
+}
+
+console.log("diferencia simetrica");
+console.log(diferenciaSimetrica([1, 2, 3], [3, 7, 11]));
+
+/*
+
 
 Desafío de programación #26: Crear una función que reciba dos arrays de números y retorne un nuevo array con los elementos que se encuentren en el primer array, pero no en el segundo
 Nota; Esto se llama "resta" entre conjuntos
 Ejemplo:
   [5,1,2,3,4] y [3,4] debería devolver [5,1,2]
+*/
+function restaEntreConjuntos(array1, array2) {
+  return array1.filter((x) => !array2.includes(x));
+}
+
+console.log("resta entre conjuntos");
+console.log(restaEntreConjuntos([5, 1, 2, 3, 4], [3, 4]));
+
+/*
+
 
 Desafío de programación #27: Crear una función que reciba un array de números como argumento y retorne un array con los elementos distintos
 Ejemplo:
    [1,2,3,4,5,4,3,2,1,0] debería retornar [1,2,3,4,5,0]
+*/
+function elementosDistintos(array) {
+  return array.filter((x, index) => array.indexOf(x) === index);
+}
+
+console.log("elementos distintos");
+console.log(elementosDistintos([1, 2, 3, 4, 5, 4, 3, 2, 1, 0]));
+
+/*
 
 
 ==== FALTAN TRADUCIR
+
 Desafío de programación #28: Calculate the sum of first 100 prime numbers
+
+*/
+function sumarPrimos(numero) {
+  let suma = 0;
+  // let contador = 0;
+  let i = 2;
+
+  while (i < numero) {
+    let primo = true;
+    for (let j = 2; j < i; j++) {
+      if (i % j === 0) {
+        primo = false;
+        break;
+      }
+    }
+    if (primo) {
+      suma += i;
+      // contador++;
+    }
+    i++;
+  }
+
+  return suma;
+}
+
+console.log("sumar primos");
+console.log(sumarPrimos(10));
+
+/*
+
+
 Desafío de programación #29: Print the distance between the first 100 prime numbers
+*/
+function distanciaEntrePrimos(numero) {}
+
+/*
+
+
 Desafío de programación #30-a: Create a function that will add two positive numbers of indefinite size. The numbers are received as strings and the result should be also provided as string.
+*/
+
+/*
+
+
+
 Desafío de programación #30-b: Create a function that will add two positive numbers of indefinite size. The numbers are received as strings and the result should be also provided as string.
+*/
+
+/*
+
+
+
 Desafío de programación #31-a. Create a function that will return the number of words in a text
+
+*/
+
+/*
+
+
 Desafío de programación #31-b. Create a function that will return the number of words in a text
+
+*/
+
+/*
+
+
 Desafío de programación #32. Create a function that will capitalize the first letter of each word in a text
+
+*/
+
+/*
+
+
 Desafío de programación #33. Calculate the sum of numbers received in a comma delimited string
+
+*/
+
+/*
+
+
 Desafío de programación #34. Create a function that will return an array with words inside a text
+
+*/
+
+/*
+
 Desafío de programación #35. Create a function to convert a CSV text to a “bi-dimensional” array
+
+*/
+
+/*
+
 Desafío de programación #36. Create a function that converts a string to an array of characters
+
+*/
+
+/*
+
 Desafío de programación #37. Create a function that will convert a string in an array containing the ASCII codes of each character
+
+*/
+
+/*
+
 Desafío de programación #38. Create a function that will convert an array containing ASCII codes in a string
+
+*/
+
+/*
+
 Desafío de programación #39. Implement the Caesar cypher
+
+*/
+
+/*
+
 Desafío de programación #40. Implement the bubble sort algorithm for an array of numbers
+
+*/
+
+/*
+
 Desafío de programación #41. Create a function to calculate the distance between two points defined by their x, y coordinates
+
+*/
+
+/*
+
 Desafío de programación #42. Create a function that will return a Boolean value indicating if two circles defined by center coordinates and radius are intersecting
+
+*/
+
+/*
+
 Desafío de programación 43. Create a function that will receive a bi-dimensional array as argument and a number and will extract as a unidimensional array the column specified by the number
+*/
+
+/*
+
+
 Desafío de programación #44. Create a function that will convert a string containing a binary number into a number
+
+*/
+
+/*
+
 Desafío de programación #45. Create a function to calculate the sum of all the numbers in a jagged array (array contains numbers or other arrays of numbers on an unlimited number of levels)
+*/
+
+/*
+
+
 Desafío de programación #46-a. Find the maximum number in a jagged array of numbers or array of numbers
+
+*/
+
+/*
+
 Desafío de programación #46-b. Find the maximum number in a jagged array of numbers or array of numbers
+
+*/
+
+/*
+
 Desafío de programación #47. Deep copy a jagged array with numbers or other arrays in a new array
+
+*/
+
+/*
+
 Desafío de programación #48. Create a function to return the longest word(s) in a string
+
+*/
+
+/*
+
 Desafío de programación #49. Shuffle an array of strings
+
+*/
+
+/*
+
 Desafío de programación #50. Create a function that will receive n as argument and return an array of n unique random numbers from 1 to n.
+
+*/
+
+/*
+
 Desafío de programación #51. Find the frequency of characters inside a string. Return the result as an array of objects. Each object has 2 fields: character and number of occurrences.
+*/
+
+/*
+
+
 Desafío de programación #52. Calculate Fibonacci(500) with high precision (all decimals)
+
+*/
+
+/*
+
 Desafío de programación #53. Calculate 70! with high precision (all decimals)
  */
