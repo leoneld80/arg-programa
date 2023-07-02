@@ -520,13 +520,40 @@ console.log(sumarPrimos(10));
 
 Desafío de programación #29: Print the distance between the first 100 prime numbers
 */
-function distanciaEntrePrimos(numero) {}
+function distanciaEntrePrimos(numero) {
+  let distancia = 0;
+  let i = 2;
+  let ultimoPrimo = 2;
+
+  while (i < numero) {
+    let primo = true;
+    for (let j = 2; j < i; j++) {
+      if (i % j === 0) {
+        primo = false;
+        ultimoPrimo = j;
+        break;
+      }
+    }
+    if (primo) {
+      distancia =  i - ultimoPrimo;
+      console.log(distancia)
+    }
+    i++;
+  }
+
+
+}
+
+console.log("distancia entre primos");
+console.log(distanciaEntrePrimos(20));
 
 /*
 
 
 Desafío de programación #30-a: Create a function that will add two positive numbers of indefinite size. The numbers are received as strings and the result should be also provided as string.
 */
+
+
 
 /*
 
