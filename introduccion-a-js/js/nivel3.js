@@ -287,7 +287,10 @@ parrafo.style.color = 'red';
 //
 // P.S. También les podés dar estilos al nuevo nodo que creaste.
 
+const nuevaImagen = document.createElement('img');
+nuevaImagen.src = 'img/woman_bw.jpg';
 
+document.querySelector('header').appendChild(nuevaImagen);
 
 
 
